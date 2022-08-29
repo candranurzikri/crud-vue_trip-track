@@ -1,7 +1,5 @@
 <template>
-
-  <routerView/>
-  
+    <h1>EDIT</h1>
 </template>
 
 <script>
