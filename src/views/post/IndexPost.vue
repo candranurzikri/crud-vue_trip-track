@@ -11,6 +11,8 @@
                         <table class="table table-striped table-bordered mt-4">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Id user</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Jam</th>
                                     <th scope="col">Lokasi</th>
@@ -20,6 +22,8 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(post, index) in catatan" :key="index">
+                                    <td>{{ post.id }}</td>
+                                    <td>{{ post.id_user }}</td>
                                     <td>{{ post.tanggal }}</td>
                                     <td>{{ post.jam }}</td>
                                     <td>{{ post.lokasi }}</td>
@@ -31,7 +35,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -66,10 +69,10 @@ export default {
 
         })
 
-        //return
-        return {
-            catatan
-        }
+         //return
+    return {
+    catatan
+    }
 
     }
 
