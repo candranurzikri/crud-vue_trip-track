@@ -11,7 +11,7 @@
                         <table class="table table-striped table-bordered mt-4">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">#</th>
                                     <th scope="col">Id user</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Jam</th>
@@ -30,7 +30,7 @@
                                     <td>{{ post.suhu }}</td>
                                     <td class="text-center">
                                         <router-link :to="{name: 'post.edit', params:{id: post.id }}" class="btn btn-sm btn-primary mr-1">EDIT</router-link>
-                                        <button class="btn btn-sm btn-danger ml-1">DELETE</button>
+                                        <button @click.prevent="postDelete(post.id)" class="btn btn-sm btn-danger ml-1">DELETE</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -69,10 +69,27 @@ export default {
 
         })
 
-         //return
-    return {
-    catatan
-    }
+        //method delete
+        function postDelete(id) {
+            
+            //delete data post by ID
+            axios.delete(`http://127.0.0.1:8000/api/catatan/${id}`)
+            .then(() => {
+                    
+                //splice posts 
+                catatan.value.splice(catatan.value.indexOf(id), 1);
+        
+            }).catch(error => {
+                console.log(error.response.data)
+            })
+                
+        }
+
+        //return
+        return {
+            catatan,
+            postDelete
+        }
 
     }
 
